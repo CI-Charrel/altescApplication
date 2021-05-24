@@ -1,0 +1,6 @@
+module Pods_altescapplication_altescapplicationTests {
+  umbrella header "Pods-altescapplication-altescapplicationTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
