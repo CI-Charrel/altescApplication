@@ -16,7 +16,8 @@ const AppStyle = StyleSheet.create({
     },
 
     fontHeader: {
-        fontSize: 30,
+        fontSize: 38,
+        fontWeight: 'bold',
         color:'black',
         fontFamily: 'FuturaSH-Medium'
     },

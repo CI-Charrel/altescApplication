@@ -6,11 +6,13 @@ import { Badge } from 'react-native-elements'
 import { backNavigation } from '../utilities/helperTools';
 import { AppNavigate } from '../utilities/app_navigation';
 import AppContainer from './AppContainerView';
-
+import { useSelector } from 'react-redux';
 
 
 const AppTechTools = (props) => {
   
+  const data = useSelector((state) => state.device);
+  console.log(data)
   useEffect(() => {
     const screen = 'AppCustomize';
     const backhandler = BackHandler.addEventListener('hardwareBackPress', () => backNavigation(props, screen));
@@ -39,40 +41,23 @@ const AppTechTools = (props) => {
 
          
           {/* list of headset devices */}
-          <View style={{ marginTop:20 }}>
-            <View style={{ flexDirection:'row', justifyContent:'space-between'}}>
-              <View style={{ flexDirection:'row'}}>
-                <View style={{ marginTop:6, marginRight:5}}>
-                  <Badge status="warning" />
-                </View>
-                <Text style={[AppStyle.fontSmall, { paddingRight:30}]}>TWS B2341</Text>
-              </View>
-              <View style={{ flexDirection:'row'}}>
-                <TouchableOpacity onPress={() => props.navigation.navigate('AppCustomize', {name: 'TWS Headset'})}>
-                <Edit style={{ paddingRight:45}}></Edit>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => alert()}>
-                  <Trash></Trash>
-                </TouchableOpacity>
-              </View>
-            </View>    
-            <View>
-              <TouchableOpacity onPress={() => props.navigation.navigate('AppPlayingView')}>
-                < Image style={{ width:'100%', height:80}} source={require('../assets/pair.png')} onPress={() => alert('sample')}/>
-              </TouchableOpacity>
-            </View>
-          </View>
 
-          <View style={{ marginTop:20 }}>
+          {data.devices.map((device)=>
+          (<View style={{ marginTop:20 }} key={device.id}>
             <View style={{ flexDirection:'row', justifyContent:'space-between'}}>
-              <View style={{flexDirection:'row'}}>
+              <View style={{ flexDirection:'row'}}>
                 <View style={{ marginTop:6, marginRight:5}}>
-                  <Badge status="success" />
+                  {device.isConnected?  <Badge status="success" />:  <Badge status="warning" />}
+                 
                 </View>
-                <Text style={[AppStyle.fontSmall, { paddingRight:30}]}>TWS WE2X</Text>
+                <Text style={[AppStyle.fontSmall, { paddingRight:30}]}>{device.name}</Text>
               </View>
               <View style={{ flexDirection:'row'}}>
-                <TouchableOpacity onPress={() => props.navigation.navigate('AppCustomize', {name: 'TWS Headset'})}>
+                <TouchableOpacity onPress={() => {props.navigation.reset({
+                      index: 0,
+                      routes: [{name: "AppCustomize", params: {id: device.id, name: device.name, isConnected: device.isConnected, screen: 'appTechTools'}}]
+                  });
+                    }}>
                 <Edit style={{ paddingRight:45}}></Edit>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => alert()}>
@@ -85,7 +70,10 @@ const AppTechTools = (props) => {
                 < Image style={{ width:'100%', height:80}} source={require('../assets/pair.png')} onPress={() => alert('sample')}/>
               </TouchableOpacity>
             </View>
-          </View>
+          </View>)
+          )}
+          
+
 
 
           

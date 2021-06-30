@@ -6,11 +6,13 @@ import { BackIcon, NowPlayingIcon } from '../utilities/svgroup';
 import { renderSoundAdjustment, backNavigation } from '../utilities/helperTools';
 import AppContainer from './AppContainerView';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useSelector } from "react-redux";
 
 
 const AppSoundset = (props) => {
   // ApplicationBackPress (props, 'AppPlayingView');
 
+  const sound = useSelector((state) => state.sound);
   useEffect(() => {
     const screen = 'AppPlayingView';
     const backhandler = BackHandler.addEventListener('hardwareBackPress', () => backNavigation(props, screen));
@@ -35,7 +37,7 @@ const AppSoundset = (props) => {
 
           <View style={{ flex:2, flexDirection:'row', justifyContent:'center' }}>
 
-            { renderSoundAdjustment() }
+            { renderSoundAdjustment(sound.bass,sound.mid,sound.treble,sound.loud) }
             
           </View>
 

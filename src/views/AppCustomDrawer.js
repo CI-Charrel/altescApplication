@@ -61,16 +61,17 @@ function AppCustomDrawer({ ...props }){
 }
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 20,
+        paddingTop: 32,
         flex: 1,
         backgroundColor:'#211e1e'
       },
       navItemStyle: {
         padding: 8,
         fontFamily:'FuturaSH-Medium',
-        fontSize:20,
-        color:'#fff',
-        marginLeft:15
+        fontSize: 42,
+        color: '#fff',
+        marginLeft: 15,
+        fontWeight: 'bold'
       },
       sectionHeadingStyle: {
         paddingVertical: 10,

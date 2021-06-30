@@ -53,6 +53,7 @@ export default function AppRoute() {
         {/* <Stack.Screen name="AppTechTools" component={AppTechTools} /> */}
         
         
+        <Stack.Screen name="AppFind" component={AppFind} />
         <Stack.Screen name="AppMainView" component={AppMainView} />
         <Stack.Screen name="AppSearchView" component={AppSearchView} />
         <Stack.Screen name="AppDeviceListView" component={AppDeviceListView} />
@@ -65,7 +66,6 @@ export default function AppRoute() {
         <Stack.Screen name="AppContact" component={AppContact} />
         <Stack.Screen name="AppSoundset" component={AppSoundset} />
         <Stack.Screen name="AppNotification" component={AppNotification} />
-        <Stack.Screen name="AppFind" component={AppFind} />
         <Stack.Screen name="AppCharge" component={AppCharge} />
 
   </Stack.Navigator>

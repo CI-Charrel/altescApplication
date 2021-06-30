@@ -3,7 +3,8 @@ import { View, Text } from 'react-native';
 import { AppStyle } from '../styles/app_style'
 import AsyncStorage from '@react-native-community/async-storage';
 import Slider from '@react-native-community/slider';
-
+import * as SoundActions from '../core/actions/sound-action';
+import { useDispatch } from "react-redux";
 
 
 const getAppTmp = async () => {
@@ -93,6 +94,7 @@ const AppDeviceList = async () => {
 
 const renderSoundAdjustment = (bass, mid, treble, loud) =>
 {
+    const dispatch = useDispatch();
     const labels = ["bass","mid","treble","loud"];
     const volumes = [bass, mid, treble, loud];
 
@@ -113,7 +115,8 @@ const renderSoundAdjustment = (bass, mid, treble, loud) =>
                         minimumTrackTintColor="#000"
                         maximumTrackTintColor="#000"
                         thumbImage={ require('../assets/circle.png') }
-                        // onValueChange={(value) => this.updateVolume(value, element)}
+
+                        onValueChange={(value) => dispatch(SoundActions.setSound(value,element))}
                         step={2}/>
                 <Text style={{ fontFamily:'FuturaSH-Medium', fontSize:20, marginTop:95}}>{ element }</Text>    
             </View>

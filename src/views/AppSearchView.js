@@ -4,6 +4,7 @@ import { AppStyle } from '../styles/app_style';
 import { Reload } from '../utilities/svgroup';
 import { AppManager } from '../utilities/app_bridge';
 import AppContainer from './AppContainerView';
+import { Platform } from 'react-native';
 
 
 const AppSearchView = (props) => {
@@ -60,15 +61,23 @@ const AppSearchView = (props) => {
     const bridge = AppManager();
     if(show){
       setTimeout(() => {
-        bridge.searchDevices((callback) => {
-          console.log(callback["payload"]);
-          if(callback["payload"].length > 0) {
-            props.navigation.navigate('AppDeviceListView')
-          }
-          else {
-            setShow(false);
-          }
-        });
+        let data;
+        if(Platform.OS == 'ios'){
+         data = bridge.searchDevices()
+        }else{
+          bridge.searchDevices(callback => {
+            data = callback;
+          });
+        }
+        if(data["payload"].length > 0) {
+          console.log('heree')
+          props.navigation.navigate('AppDeviceListView')
+        }
+        else {
+          setShow(false);
+        }
+
+
       }, 5000);
     }
   }); 

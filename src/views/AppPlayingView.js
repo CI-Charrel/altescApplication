@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, BackHandler } from 'react-native';
 import { AppStyle } from '../styles/app_style'
-import { Battery, NowPlayingIcon, Find, ChargeIcon, Info, Notify, Sound } from '../utilities/svgroup'
+import { Battery, NowPlayingIcon, Find, ChargeIcon, Info, Notify, Sound, BackIcon } from '../utilities/svgroup'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { backNavigation } from '../utilities/helperTools';
 import { AppNavigate } from '../utilities/app_navigation'
@@ -20,7 +20,9 @@ const AppPlayingView = (props) => {
             <View style={AppStyle.mainscreen}>
                 <View style={{ flexDirection:'row', height:35, justifyContent:'space-between'}}>
 
-                    <View></View>
+                    <View><TouchableOpacity onPress={() => props.navigation.goBack(null) }>
+                        <BackIcon style={AppStyle.back_button} />
+                    </TouchableOpacity></View>
                     <View style={{ marginLeft:25}}><Text style={AppStyle.fontSemiHeader}>now.playing</Text></View>
                     <View>
                         <TouchableOpacity onPress={() => props.navigation.navigate('AppAskUs')}>
@@ -34,7 +36,6 @@ const AppPlayingView = (props) => {
                         <View style={{ marginTop:5}}><Info></Info></View>
                     </TouchableOpacity> */}
                 </View>
-
                 <View style={AppStyle.playingCenterLogo}>
                     <Text style={AppStyle.fontSmall}>connected</Text>
                     <Battery style={{ marginTop:-6}}></Battery>

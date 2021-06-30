@@ -4,22 +4,13 @@ import { AppStyle } from '../styles/app_style'
 import { BackIcon, NowPlayingIcon, BoxWithPlus} from '../utilities/svgroup'
 import AppContainer from './AppContainerView'
 import { backNavigation } from '../utilities/helperTools'
-
-
+import { useDispatch } from 'react-redux';
+import * as DeviceAction from '../core/actions/device-action';
 const AppCustomize = (props) => {
-
-    useEffect(() => {
-        console.log('mount customize');
-        const screen = 'AppDeviceListView';
-        const backhandler = BackHandler.addEventListener('hardwareBackPress', () => backNavigation(props, screen));
-        return () => backhandler.remove();
-      },[])
-    
-
+    const dispatch = useDispatch();
     const [cross, setcross] = useState("");
-    const [devicename, setdevicename] = useState(props.route.params.device);
-
-
+    const [devicename, setdevicename] = useState(props.route.params.name);
+    const screen = props.route.params.screen;
     const addchecksign = (color) => {
         setcross(color);
     }
@@ -30,6 +21,13 @@ const AppCustomize = (props) => {
         }
         return cross;
     }
+    useEffect(() => {
+
+        console.log('mount customize');
+        const screen = 'AppDeviceListView';
+        const backhandler = BackHandler.addEventListener('hardwareBackPress', () => backNavigation(props, screen));
+        return () => backhandler.remove();
+      },[])
 
     return (
         <AppContainer>
@@ -39,12 +37,16 @@ const AppCustomize = (props) => {
                 <View style={{ flex:1 }}>
                     <View style={{ justifyContent:'space-between', flexDirection:'row', flex:1}}>
                         <View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate('AppDeviceListView') }>
+                            <TouchableOpacity onPress={() => screen==='appTechTools'? props.navigation.navigate('AppTechTools') : props.navigation.navigate('AppDeviceListView') }>
                                 <BackIcon style={AppStyle.back_button} />
                             </TouchableOpacity>
                         </View>
                         <View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate('AppTechTools') }>
+                            <TouchableOpacity onPress={() => {
+                                    dispatch(DeviceAction.updateDevice(props.route.params.id,devicename))
+                                    console.log('update d')
+                                    props.navigation.navigate('AppTechTools')
+                                }}>
                                 <Text style={AppStyle.finish}>finish</Text>
                             </TouchableOpacity>
                         </View>
