@@ -6,7 +6,7 @@ const AppManager = () => {
         const bridge = MockModule;
         return bridge;
     } else {
-        const bridge = NativeModules.AltEscModule;
+        const bridge = MockModule;
         return bridge;
     }
 }

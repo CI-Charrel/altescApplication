@@ -27,7 +27,7 @@ const BoxWithPlus = props =>
             />
             <Path className="prefix__cls-3" 
               d="M8.93 5.89v6.07M5.9 8.93h6.06" 
-              stroke={props.stroke} strokeWidth={1.42} />
+              stroke={props.withPlus?'#000': '#fff'} strokeWidth={1.42} />
           </G>
         </G>
       </Svg>

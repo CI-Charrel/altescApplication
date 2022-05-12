@@ -1,6 +1,6 @@
 import constants from "../types";
 const initialState = {
-    devices: [ { id: 1, name: 'TWS B2341', isConnected: true},{ id: 2, name: 'TWS WE2X', isConnected: false}]
+    devices: [ { id: 1, name: 'TWS B2341', isConnected: true, color: 'white'},{ id: 2, name: 'TWS WE2X', isConnected: false, color: 'black'}]
 };
 
 export function deviceReducer(state = initialState, action) {
@@ -16,6 +16,10 @@ export function deviceReducer(state = initialState, action) {
         console.log(filteredDevice)
         return Object.assign({}, state, {
         devices: filteredDevice
+    });
+    case constants.DELETE_DEVICE: 
+      return Object.assign({}, state, {
+        devices: state.devices.filter(x=>x.id != action.id)
     });
     default:
       return state;

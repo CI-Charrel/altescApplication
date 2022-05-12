@@ -6,45 +6,18 @@ import { BackIcon } from '../utilities/svgroup';
 import { Twitter, Facebook, Snapshot, Instagram, Tiktok, SvgNotify, BoxWithPlus } from '../utilities/svgroup';
 import { backNavigation } from '../utilities/helperTools';
 import AppContainer from './AppContainerView';
-
+import { useDispatch, useSelector } from 'react-redux';
+import * as NotificationAction from '../core/actions/notification-action';
 
 const AppNotification = (props) => {
-  const [twitter,  settwitter] = useState("");
-  const [facebook, setfacebook] = useState("");
-  const [snapshot, setsnapshot] = useState("");
-  const [instagram, setinstagram] = useState("");
-  const [tiktok,  settiktok] = useState("");
-
-  const setKeys = {
-    "twitter": settwitter,
-    "facebook": setfacebook,
-    "snapshot": setsnapshot,
-    "instagram": setinstagram,
-    "tiktok": settiktok
-  };
-
+  
+  const dispatch = useDispatch();
+  const notification = useSelector((state) => state.notification);
   useEffect(() => {
     const screen = 'AppPlayingView';
     const backhandler = BackHandler.addEventListener('hardwareBackPress', () => backNavigation(props, screen));
     return () => backhandler.remove();
   },[])
-
-
-  const addplus = (key, color) => {
-    var mycolor = "";
-    if(color == "#fff" || color == "") {
-      mycolor = "#000"
-    }
-    else {
-      mycolor = "#fff"
-    }
-    
-    console.log(key);
-    console.log(mycolor);
-
-    setKeys[key](mycolor);
-
-  }
 
   return (
     <AppContainer>
@@ -62,7 +35,7 @@ const AppNotification = (props) => {
             <View style={{ flexDirection:'row'}}>
               <Twitter style={{marginBottom:20}}/>
               <View style={{ marginTop:5, marginLeft:30}}>
-                <BoxWithPlus style={AppStyle.box} fill="#ffff" stroke={twitter} onPress={()=> addplus('twitter', twitter)}/>
+                <BoxWithPlus style={AppStyle.box} fill="#ffff" withPlus={notification.twitter} onPress={()=> dispatch(NotificationAction.updateTwitterNotification(!notification.twitter))} />
               </View>
             </View>
             
@@ -70,21 +43,21 @@ const AppNotification = (props) => {
             <View style={{ flexDirection:'row'}}>
               <Facebook style={{marginBottom:20}}/>
               <View style={{ marginTop:5, marginLeft:30}}>
-                <BoxWithPlus style={AppStyle.box} fill="#ffff" stroke={facebook} onPress={()=> addplus('facebook', facebook)}/>
+                <BoxWithPlus style={AppStyle.box} fill="#ffff" withPlus={notification.facebook} onPress={()=> dispatch(NotificationAction.updateFacebookNotification(!notification.facebook))} />
               </View>
             </View>
 
             <View style={{ flexDirection:'row'}}>
               <Snapshot style={{marginBottom:20}}/>
               <View style={{ marginTop:5, marginLeft:30}}>
-                <BoxWithPlus style={AppStyle.box} fill="#ffff" stroke={snapshot} onPress={()=> addplus('snapshot', snapshot)}/>
+                <BoxWithPlus style={AppStyle.box} fill="#ffff" withPlus={notification.snapshot} onPress={()=> dispatch(NotificationAction.updateSnapshotNotification(!notification.snapshot))} />
               </View>
             </View>
 
             <View style={{ flexDirection:'row'}}>
               <Instagram style={{marginBottom:20}}/>
               <View style={{ marginTop:5, marginLeft:30}}>
-                <BoxWithPlus style={AppStyle.box} fill="#ffff" stroke={instagram} onPress={()=> addplus('instagram', instagram)}/>
+                <BoxWithPlus style={AppStyle.box} fill="#ffff" withPlus={notification.instagram} onPress={()=> dispatch(NotificationAction.updateInstagramNotification(!notification.instagram))} />
               </View>
             </View>
 
@@ -92,7 +65,7 @@ const AppNotification = (props) => {
             <View style={{ flexDirection:'row'}}>
               <Tiktok style={{marginBottom:20}}/>
               <View style={{ marginTop:5, marginLeft:30}}>
-                <BoxWithPlus style={AppStyle.box} fill="#ffff" stroke={tiktok} onPress={()=> addplus('tiktok', tiktok)}/>
+                <BoxWithPlus style={AppStyle.box} fill="#ffff" withPlus={notification.tiktok} onPress={()=> dispatch(NotificationAction.updateTiktokNotification(!notification.tiktok))} />
               </View>
             </View>
            

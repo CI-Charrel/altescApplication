@@ -8,7 +8,7 @@ const initialState = {
 
 export function soundReducer(state = initialState, action) {
   switch (action.type) {
-    case constants.SET_BASS:
+      case constants.SET_BASS:
       return Object.assign({}, state, {
         bass: action.payload,
       });

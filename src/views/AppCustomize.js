@@ -10,17 +10,9 @@ const AppCustomize = (props) => {
     const dispatch = useDispatch();
     const [cross, setcross] = useState("");
     const [devicename, setdevicename] = useState(props.route.params.name);
+    const [color, setColor] = useState(props.route.params.color);
     const screen = props.route.params.screen;
-    const addchecksign = (color) => {
-        setcross(color);
-    }
-
-    const checkstroke = (color) => {
-        if(color != cross){
-            return "";
-        }
-        return cross;
-    }
+    console.log(props.route.params)
     useEffect(() => {
 
         console.log('mount customize');
@@ -43,7 +35,7 @@ const AppCustomize = (props) => {
                         </View>
                         <View>
                             <TouchableOpacity onPress={() => {
-                                    dispatch(DeviceAction.updateDevice(props.route.params.id,devicename))
+                                    dispatch(DeviceAction.updateDevice(props.route.params.id,devicename,color))
                                     console.log('update d')
                                     props.navigation.navigate('AppTechTools')
                                 }}>
@@ -70,8 +62,8 @@ const AppCustomize = (props) => {
                     <Text style={AppStyle.fontSmall}>+ color</Text>
 
                     <View style={{ flexDirection:'row'}}>
-                        <BoxWithPlus style={AppStyle.box} fill="#231f20" stroke={checkstroke('#fff')} onPress={() => addchecksign('#fff')} />
-                        <BoxWithPlus style={AppStyle.box} fill="#ffff" stroke={checkstroke('#000')} onPress={() => addchecksign('#000')} />
+                        <BoxWithPlus style={AppStyle.box} fill="#000" withPlus={color === 'black'? false: true} onPress={() => setColor('black')} />
+                        <BoxWithPlus style={AppStyle.box} fill="#ffff" withPlus={color === 'white'? true: false} onPress={() => setColor('white')} />
                     </View>
                     
                 </View>    

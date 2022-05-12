@@ -64,18 +64,34 @@ const AppSearchView = (props) => {
         let data;
         if(Platform.OS == 'ios'){
          data = bridge.searchDevices()
-        }else{
-          bridge.searchDevices(callback => {
-            data = callback;
-          });
-        }
-        if(data["payload"].length > 0) {
+         if(data["payload"].length > 0) {
           console.log('heree')
           props.navigation.navigate('AppDeviceListView')
+          }
+          else {
+            setShow(false);
+          }
+        }else{
+          data = bridge.searchDevices()
+         if(data["payload"].length > 0) {
+          console.log('heree')
+          props.navigation.navigate('AppDeviceListView')
+          }
+          else {
+            setShow(false);
+          }
+          // bridge.searchDevices(callback => {
+          //   data = callback;
+          //   if(data["payload"].length == 0) {
+          //     console.log('heree')
+          //     props.navigation.navigate('AppDeviceListView')
+          //   }
+          //   else {
+          //     setShow(false);
+          //   }
+          // });
         }
-        else {
-          setShow(false);
-        }
+        
 
 
       }, 5000);

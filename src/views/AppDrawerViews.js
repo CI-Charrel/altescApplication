@@ -5,6 +5,7 @@ import AppContainer from './AppContainerView';
 import { drawerView } from '../utilities/templateString';
 import { backNavigation } from '../utilities/helperTools';
 import { Close } from '../utilities/svgroup';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const AppDrawerViews = (props) => {
@@ -20,7 +21,9 @@ const AppDrawerViews = (props) => {
     <AppContainer>
       <View style={AppStyle.mainscreen}>
           <View style={{ flexDirection:'row', height:35}}>
-            <Close style={{ marginTop:10 }} onPress={() => props.navigation.navigate('AppTechTools')}/>
+            <TouchableOpacity onPress={() => props.navigation.navigate('AppTechTools')}>
+              <Close style={{ marginTop:10 }} />
+            </TouchableOpacity>
               <View style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
                 <Text style={AppStyle.fontSemiHeader}>{props.route.params.name}</Text>
               </View>

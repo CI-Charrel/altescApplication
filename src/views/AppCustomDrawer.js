@@ -3,6 +3,7 @@ import React from "react";
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { Logo } from '../utilities/svgroup'
 import { ApplicationBackPress } from '../utilities/helperTools';
+import { Platform } from "react-native";
 
 function AppCustomDrawer({ ...props }){
   // ApplicationBackPress (props, 'AppCustomize');
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
       navItemStyle: {
         padding: 8,
         fontFamily:'FuturaSH-Medium',
-        fontSize: 42,
+        fontSize: Platform.OS==='ios'? 42 : 32,
         color: '#fff',
         marginLeft: 15,
         fontWeight: 'bold'

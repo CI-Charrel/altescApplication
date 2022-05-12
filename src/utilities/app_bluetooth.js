@@ -6,12 +6,15 @@ const EnableBluetoothDevice = () => {
         console.log('ios');
     } 
     else {
-        const bridge = AppManager();
-        bridge.isBluetoothEnabled((callback) => {
-            if(callback == "disabled") {
-                bridge.enableBluetooth();
-            }
-        });
+        
+        console.log('ios');
+        // const bridge = AppManager();
+        // console.log(bridge)
+        // bridge.isBluetoothEnabled((callback) => {
+        //     if(callback == "disabled") {
+        //         bridge.enableBluetooth();
+        //     }
+        // });
     }
 }
 

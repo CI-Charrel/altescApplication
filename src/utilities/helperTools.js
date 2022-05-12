@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { AppStyle } from '../styles/app_style'
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Slider from '@react-native-community/slider';
 import * as SoundActions from '../core/actions/sound-action';
 import { useDispatch } from "react-redux";

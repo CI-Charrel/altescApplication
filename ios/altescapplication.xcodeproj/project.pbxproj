@@ -514,20 +514,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2WM3X85TZ6;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 8LYM93GWBH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = altescapplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.altescapplication;
+				PRODUCT_BUNDLE_IDENTIFIER = com.altesc.altesc;
 				PRODUCT_NAME = altescapplication;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -541,19 +542,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2WM3X85TZ6;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 8LYM93GWBH;
 				INFOPLIST_FILE = altescapplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.altescapplication;
+				PRODUCT_BUNDLE_IDENTIFIER = com.altesc.altesc;
 				PRODUCT_NAME = altescapplication;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
